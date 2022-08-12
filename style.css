@@ -1,0 +1,41 @@
+li{
+    color: blue;
+}
+body{
+    background-color: white;
+}
+#img{
+    width: 200px;
+}
+#icon{
+    border: 2px solid;
+    border-radius: 130px;
+    width: 50px;
+    margin-top: 20px;
+}
+h1{
+    margin-top: 20px;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+
+p{
+    font-size: 20px;
+    font-family: cursive;
+    color: rgb(212, 10, 64);
+    margin-bottom: 10px;
+}
+
+.abdiv{
+    color: orangered;
+}
+
+.mvdiv{
+    color: green
+}
+.wtdiv{
+    color: blue(125, 12, 156);
+    margin-bottom: 10px;
+}
