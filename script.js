@@ -19,50 +19,62 @@ function createbutton(tagname, attrname, attrvalue, data, attr2, eventvalue) {
     return ele1
 }
 
-async function geturl1(){
-    var res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=10")
-    var result = await res.json()
-    var final = result.results
-    pokemondata(final)
-}
-
-async function geturl2(){
-    var res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=10&offset=10")
-    var result = await res.json()
-    var final = result.results
-    pokemondata(final)
-}
-
-async function geturl3(){
-    var res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=10&offset=20")
-    var result = await res.json()
-    var final = result.results
-    pokemondata(final)
-}
-
-async function geturl4(){
-    var res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=10&offset=30")
-    var result = await res.json()
-    var final = result.results
-    pokemondata(final)
-}
-
-async function geturl5(){
-    var res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=10&offset=40")
-    var result = await res.json()
-    var final = result.results
-    pokemondata(final)
-}
-
-
 var container = document.createElement("div")
 container.setAttribute("class", "container")
-var list = document.createElement("ol")
+var list1 = document.createElement("ol")
+list1.setAttribute("id", "list1")
+var list2 = document.createElement("ol")
+list2.setAttribute("id", "list2")
+var list3 = document.createElement("ol")
+list3.setAttribute("id", "list3")
+var list4 = document.createElement("ol")
+list4.setAttribute("id", "list4")
+var list5 = document.createElement("ol")
+list5.setAttribute("id", "list5")
+container.append(list1,list2,list3,list4,list5)
 document.body.append(container)
 
+async function geturl1() {
+    var dummy=document.querySelectorAll("#list2, #list3, #list4, #list5")
+    for(let x=0;x<4;x++){dummy[x].style.display="none"}
+    var res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=10")
+    pokemondata(res,document.getElementById("list1"))
+}
 
-async function pokemondata(final) {
+async function geturl2() {
+    var dummy=document.querySelectorAll("#list1, #list3, #list4, #list5")
+    for(let x=0;x<4;x++){dummy[x].style.display="none"}
+    var res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=10&offset=10")
+    pokemondata(res,document.getElementById("list2"))
+}
+
+async function geturl3() {
+    var dummy=document.querySelectorAll("#list1, #list2, #list4, #list5")
+    for(let x=0;x<4;x++){dummy[x].style.display="none"}
+    var res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=10&offset=20")
+    pokemondata(res,document.getElementById("list3"))
+}
+
+async function geturl4() {
+    var dummy=document.querySelectorAll("#list1, #list2, #list3, #list5")
+    for(let x=0;x<4;x++){dummy[x].style.display="none"}
+    var res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=10&offset=30")
+    pokemondata(res,document.getElementById("list4"))
+}
+
+async function geturl5() {
+    var dummy=document.querySelectorAll("#list1, #list2, #list3, #list4")
+    for(let x=0;x<4;x++){dummy[x].style.display="none"}
+    var res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=10&offset=40")
+    pokemondata(res,document.getElementById("list5"))
+}
+
+
+async function pokemondata(url,list) {
+    list.style.display="block"
     try {
+        var result = await url.json()
+        var final = result.results
         for (let i in final) {
             var eachitem = document.createElement("li")
             var pkname = document.createElement("p")
@@ -82,13 +94,13 @@ async function pokemondata(final) {
             }
             var abdiv = document.createElement("div")
             abdiv.setAttribute("class", "abdiv")
-            abdiv.innerHTML = `Abilities: ${pkability}`
+            abdiv.innerHTML = `𝑨̲𝒃̲𝒊̲𝒍̲𝒊̲𝒕̲𝒊̲𝒆̲𝒔̲: ${pkability}`
             var mvdiv = document.createElement("div")
             mvdiv.setAttribute("class", "mvdiv")
-            mvdiv.innerHTML = `Moves: ${pkmoves}`
+            mvdiv.innerHTML = `𝑴̲𝒐̲𝒗̲𝒆̲𝒔̲: ${pkmoves}`
             var wtdiv = document.createElement("div")
             wtdiv.setAttribute("class", "wtdiv")
-            wtdiv.innerHTML = `Weight: ${pkweight}`
+            wtdiv.innerHTML = `𝑾̲𝒆̲𝒊̲𝒈̲𝒉̲𝒕̲: ${pkweight}`
             eachitem.append(pkname, abdiv, mvdiv, wtdiv)
             list.append(eachitem)
         }
@@ -97,7 +109,4 @@ async function pokemondata(final) {
     catch (err) {
         console.log(err)
     }
-
 }
-
-
