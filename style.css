@@ -1,9 +1,9 @@
 li{
     color: blue;
 }
-body{
-    background-color: white;
-}
+
+
+
 #img{
     width: 200px;
 }
@@ -29,13 +29,19 @@ p{
 }
 
 .abdiv{
-    color: orangered;
+    background-color: black;
+    padding-left: 20px;
+    color: rgb(232, 75, 17);
 }
 
 .mvdiv{
-    color: green
+    background-color: black;
+    padding-left: 20px;
+    color: yellow
 }
 .wtdiv{
-    color: blue(125, 12, 156);
-    margin-bottom: 10px;
+    background-color: black;
+    padding-left: 20px;
+    color: darkmagenta;
+    padding-bottom: 10px;
 }
